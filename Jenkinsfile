@@ -13,9 +13,10 @@ pipeline {
         }
      }
 
-        stage('stage2') {
+        stage('Check AWs Cli') {
             steps {
-                echo 'Hello Sayanti'
+               sh 'chmod +x check_aws_cli.sh'
+               sh './check_aws_cli.sh'
             }
         }
     }
