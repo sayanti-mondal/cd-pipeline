@@ -10,7 +10,7 @@ pipeline {
       stage('Check Terraform') {
          steps {
              sh 'whoami'
-             sh 'chmod u+x check_aws_cli.sh'
+             sh 'chmod u+x check_terraform.sh'
              sh './check_terraform.sh'
         }
      }
