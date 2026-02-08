@@ -28,6 +28,7 @@ pipeline {
 
         stage('AWS Configure') {
           steps {
+            dir('terraform') {
              withCredentials([
                [$class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'aws-creds']
@@ -35,11 +36,12 @@ pipeline {
                  sh '''
                    aws sts get-caller-identity
                    terraform init
+                   terraform plan
                 '''
              }
           }
-      }
-
-
+       }
+    }
+    
     }
 }
