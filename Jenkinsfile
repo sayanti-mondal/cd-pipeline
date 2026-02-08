@@ -21,5 +21,19 @@ pipeline {
                sh './check_aws_cli.sh'
             }
         }
+
+        stage('AWS Configure') {
+          steps {
+             withCredentials([
+               [$class: 'AmazonWebServicesCredentialsBinding',
+                credentialsId: 'aws-creds']
+             ]) {
+                 sh '''
+                   aws sts get-caller-identity
+                '''
+        }
+    }
+}
+
     }
 }
