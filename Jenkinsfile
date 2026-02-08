@@ -28,7 +28,7 @@ pipeline {
 
         stage('AWS Configure') {
           steps {
-            dir('terraform') {
+            dir('terraforrm') {
              withCredentials([
                [$class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'aws-creds']
