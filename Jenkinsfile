@@ -7,13 +7,12 @@ pipeline {
                 checkout scm
             }
         }
-        stage('stage1') {
-            steps {
-                sh 'whoami'
-                sh 'chmod +x script.sh'
-                sh './script.sh'
-            }
+      stage('Check Terraform') {
+         steps {
+             sh './check_terraform.sh'
         }
+     }
+
         stage('stage2') {
             steps {
                 echo 'Hello Sayanti'
