@@ -37,6 +37,7 @@ pipeline {
                    aws sts get-caller-identity
                    terraform init
                    terraform plan
+                   terraform apply --auto-approve
                 '''
              }
           }
