@@ -51,10 +51,10 @@ resource "aws_security_group" "terra_security" {
 # create ec2 instance
 resource "aws_instance" "terra_instance" {
   #count = 2 # meta argument
-  # for_each = {
-  #  web1 = "t2.micro"
-  #  web2 = "t2.micro"
-  # }
+   for_each = {
+    web1 = "t2.micro"
+    web2 = "t2.micro"
+   }
   ami             = var.ami_id
   instance_type   = var.instance_type #each.value
   key_name        = aws_key_pair.terra_key.key_name
@@ -65,7 +65,8 @@ resource "aws_instance" "terra_instance" {
     volume_type = "gp3"
   }
   tags = {
-    Name = "infra_server" #each.key
+    #Name = "infra_server"
+    Name = each.key
   }
 }
 
