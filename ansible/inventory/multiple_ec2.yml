@@ -1,0 +1,18 @@
+---
+plugin: aws_ec2
+regions:
+  - ap-south-1  # Change to your specific region
+
+# Step 1: Filter - Only pull instances created by your Terraform code
+filters:
+  tag:AnsibleHost: "true"
+  instance-state-name: [running]
+
+# Step 2: Grouping - Automatically create a group called 'env_dev'
+keyed_groups:
+  - key: tags.Environment
+    prefix: env
+
+# Step 3: Connection - Use the Public IP to connect
+hostnames:
+  - public-ip-address
