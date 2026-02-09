@@ -9,7 +9,8 @@ resource "aws_key_pair" "terra_key" {
 
 
 resource "local_file" "ansible_private_key" {
-  filename        = "${path.module}/ansible_ssh_key.pem"
-  content         = tls_private_key.ssh_key.private_key_pem
+  filename        = "${path.module}/ansible_ssh_key"
+  content         = tls_private_key.ssh_key.private_key_openssh
   file_permission = "0600"
 }
+
