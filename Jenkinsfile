@@ -36,8 +36,6 @@ pipeline {
              ]) {
                  sh '''
                    aws sts get-caller-identity
-                  // terraform destroy --auto-approve
-                  // rm -f terraform/ansible_ssh_key*
                    terraform init
                    terraform plan
                    terraform apply --auto-approve
