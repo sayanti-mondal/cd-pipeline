@@ -25,7 +25,7 @@ pipeline {
                sh './check_aws_cli.sh'
             }
         }
-       
+       /*
         stage('terraform destroy') {
           steps {
             dir('terraforrm') {
@@ -41,8 +41,8 @@ pipeline {
           }
        }
         }
+   */
    
-   /*
         stage('terraform apply') {
           steps {
             dir('terraforrm') {
@@ -66,7 +66,7 @@ pipeline {
               sh '''
                 echo "Waiting for SSH to become available..."
 
-                ansible all -i inventory/aws_ec2.yml \
+                ansible all -i inventory/multiple_ec2.yml \
                 -m wait_for_connection \
                 -a "timeout=300 sleep=10"
              '''
@@ -88,11 +88,11 @@ pipeline {
         stage('Ansible Configure') {
           steps {
              dir('ansible'){
-             sh 'ansible-inventory --graph'
-             sh 'ansible-playbook playbooks/main.yml'
+             sh 'ansible-inventory -i inventory_multiple_ec2.yml --graph'
+             sh 'ansible-playbook -i inventory_multiple_ec2.yml playbooks/main.yml'
              }
           }
         }
-    */
+    
     }
 }
