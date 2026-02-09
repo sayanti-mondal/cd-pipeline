@@ -26,7 +26,7 @@ pipeline {
             }
         }
    
-   
+   /*
         stage('terraform apply') {
           steps {
             dir('terraforrm') {
@@ -45,7 +45,7 @@ pipeline {
        }
     }
 
-    /*
+    
          stage('install/Check ansible') {
            steps {
                dir('ansible'){
