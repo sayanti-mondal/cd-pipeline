@@ -44,6 +44,16 @@ pipeline {
        }
     }
 
+         stage('install/Check ansible') {
+           steps {
+               dir('ansible'){
+                 sh 'whoami'
+                 sh 'chmod u+x check_ansible.sh'
+                 sh './check_ansible.sh'
+               }
+           }   
+         }
+
         stage('Ansible Configure') {
           steps {
              dir('ansible'){
