@@ -43,6 +43,13 @@ pipeline {
           }
        }
     }
+
+        stage('Ansible Configure') {
+          steps {
+             sh 'ansible-inventory --graph'
+             sh 'ansible-playbook playbook.yml'
+          }
+        }
     
     }
 }
