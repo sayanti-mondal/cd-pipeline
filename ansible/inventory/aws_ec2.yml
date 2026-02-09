@@ -1,0 +1,13 @@
+plugin: aws_ec2
+regions:
+  - ap-south-1
+
+keyed_groups:
+  - key: tags.Name
+    prefix: tag
+
+filters:
+  tag:Name: terraform-ec2
+
+compose:
+  ansible_host: public_ip_address
