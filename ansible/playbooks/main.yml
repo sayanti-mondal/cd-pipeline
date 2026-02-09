@@ -1,6 +1,7 @@
 - name: Configure EC2 and run Nginx
   hosts: all
   become: true
+  gather_facts: false
 
   tasks:
     - name: Update apt cache
