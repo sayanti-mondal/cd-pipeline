@@ -7,7 +7,7 @@ keyed_groups:
     prefix: tag
 
 filters:
-  tag:Name: terraform-ec2
+  tag:Name: infra_server
 
 compose:
   ansible_host: public_ip_address
