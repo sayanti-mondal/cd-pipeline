@@ -1,13 +1,21 @@
-- name: Configure EC2 instances
+- name: Configure EC2 and run Nginx
   hosts: all
   become: true
-  tasks:
 
+  tasks:
     - name: Update apt cache
       apt:
         update_cache: yes
+        cache_valid_time: 3600
 
-    - name: Install Docker
+    - name: Install Nginx
       apt:
-        name: docker.io
+        name: nginx
         state: present
+
+    - name: Start and enable Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
