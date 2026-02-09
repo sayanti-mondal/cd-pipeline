@@ -45,7 +45,7 @@ pipeline {
        }
     }
 
-    
+    */
          stage('install/Check ansible') {
            steps {
                dir('ansible'){
@@ -56,7 +56,7 @@ pipeline {
            }   
          }
 
-    */
+    
         stage('Ansible Configure') {
           steps {
              dir('ansible'){
