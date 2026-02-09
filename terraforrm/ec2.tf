@@ -56,7 +56,7 @@ resource "aws_instance" "terra_instance" {
     web2 = "t2.micro"
    }
   ami             = var.ami_id
-  instance_type   = var.instance_type #each.value
+  instance_type   = each.value #var.instance_type 
   key_name        = aws_key_pair.terra_key.key_name
   security_groups = [aws_security_group.terra_security.name]
   #user_data = file("${path.module}/nginx.sh")
