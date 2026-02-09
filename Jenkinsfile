@@ -26,7 +26,8 @@ pipeline {
             }
         }
 
-        stage('AWS Configure') {
+        /*
+        stage('terraform apply') {
           steps {
             dir('terraforrm') {
              withCredentials([
@@ -43,7 +44,7 @@ pipeline {
           }
        }
     }
-
+*/
          stage('install/Check ansible') {
            steps {
                dir('ansible'){
