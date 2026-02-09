@@ -25,8 +25,8 @@ pipeline {
                sh './check_aws_cli.sh'
             }
         }
-
-    
+   
+   /* 
         stage('terraform apply') {
           steps {
             dir('terraforrm') {
@@ -47,7 +47,7 @@ pipeline {
        }
     }
 
-    /*
+    
          stage('install/Check ansible') {
            steps {
                dir('ansible'){
