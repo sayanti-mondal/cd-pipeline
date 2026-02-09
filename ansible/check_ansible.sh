@@ -4,10 +4,10 @@ set -e
 echo "Checking Ansible..."
 if ! command -v ansible >/dev/null 2>&1; then
     echo "Ansible not found. Installing..."
-    sudo apt-get update
-    sudo add-apt-repository -y ppa:ansible/ansible
     sudo apt update
-    sudo apt install -y ansible-core
+    sudo apt install software-properties-common
+    sudo add-apt-repository --yes --update ppa:ansible/ansible
+    sudo apt install -y ansible
 
 else
     echo "Ansible already installed"
