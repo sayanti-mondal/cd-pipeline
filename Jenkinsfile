@@ -25,6 +25,22 @@ pipeline {
                sh './check_aws_cli.sh'
             }
         }
+
+        stage('terraform destroy') {
+          steps {
+            dir('terraforrm') {
+             withCredentials([
+               [$class: 'AmazonWebServicesCredentialsBinding',
+                credentialsId: 'aws-creds']
+             ]) {
+                 sh '''
+                   aws sts get-caller-identity
+                   terraform destroy --auto-approve
+                '''
+             }
+          }
+       }
+        }
    
    /*
         stage('terraform apply') {
@@ -45,7 +61,7 @@ pipeline {
        }
     }
 
-    */
+    
          stage('install/Check ansible') {
            steps {
                dir('ansible'){
@@ -65,6 +81,6 @@ pipeline {
              }
           }
         }
-    
+    */
     }
 }
