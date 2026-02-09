@@ -25,7 +25,7 @@ pipeline {
                sh './check_aws_cli.sh'
             }
         }
-       /*
+       
         stage('terraform destroy') {
           steps {
             dir('terraforrm') {
@@ -41,8 +41,8 @@ pipeline {
           }
        }
         }
-   */
    
+   /*
         stage('terraform apply') {
           steps {
             dir('terraforrm') {
@@ -93,6 +93,6 @@ pipeline {
              }
           }
         }
-    
+    */
     }
 }
