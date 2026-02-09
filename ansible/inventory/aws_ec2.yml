@@ -5,9 +5,11 @@ regions:
 keyed_groups:
   - key: tags.Name
     prefix: tag
+hostnames: 
+  - public_dns_name
+  
+#filters:
+  #tag:Name: infra_server
 
-filters:
-  tag:Name: infra_server
-
-compose:
-  ansible_host: public_ip_address
+#compose:
+  #ansible_host: public_ip_address
