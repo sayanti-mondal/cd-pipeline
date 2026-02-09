@@ -65,7 +65,7 @@ resource "aws_instance" "terra_instance" {
     volume_type = "gp3"
   }
   tags = {
-    Name = "terra_instance" #each.key
+    Name = "infra_server" #each.key
   }
 }
 
