@@ -9,5 +9,11 @@ keyed_groups:
   - key: tags.Name
     prefix: tag
 
+#filters:
+  #tag:Name: infra_server
+
+#compose:
+  #ansible_host: public_ip_address
+
   
 
