@@ -67,6 +67,9 @@ resource "aws_instance" "terra_instance" {
   tags = {
     #Name = "infra_server"
     Name = each.key
+    Environment = "dev"
+    Project     = "tutorial"
+    AnsibleHost = "true"  # Use this to f
   }
 }
 
