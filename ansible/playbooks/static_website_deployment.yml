@@ -1,0 +1,41 @@
+- name: Configure EC2 and deploy static website on Nginx
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Copy winter_gallery website to Nginx web root
+      copy:
+        src: ../winter_gallery/
+        dest: /var/www/html/
+        owner: www-data
+        group: www-data
+        mode: '0755'
+      notify: Restart Nginx
+
+    - name: Ensure Nginx is running and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Verify website is accessible
+      uri:
+        url: http://localhost
+        status_code: 200
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
