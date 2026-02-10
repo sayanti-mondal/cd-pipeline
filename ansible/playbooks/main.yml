@@ -1,7 +1,7 @@
 - name: Configure EC2 and run Nginx
   hosts: all
   become: true
-  gather_facts: false
+  gather_facts: true
 
   tasks:
     - name: Update apt cache
@@ -14,9 +14,12 @@
         name: nginx
         state: present
 
+
     - name: Start and enable Nginx
       service:
         name: nginx
         state: started
         enabled: yes
+
+
 
