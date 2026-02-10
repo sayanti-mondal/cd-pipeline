@@ -1,4 +1,4 @@
-plugin: aws_ec2
+plugin: amazon.aws.aws_ec2
 regions:
   - ap-south-1  # Change to your specific region
 
@@ -14,4 +14,4 @@ keyed_groups:
 
 # Step 3: Connection - Use the Public IP to connect
 hostnames:
-  - public-ip-address
+  - ip-address
