@@ -41,7 +41,7 @@ pipeline {
           }
        }
         }
-   */
+   
    
         stage('terraform apply') {
           steps {
@@ -84,7 +84,7 @@ pipeline {
            }   
          }
 
-    
+    */
         stage('Ansible Configure') {
           steps {
              dir('ansible'){
