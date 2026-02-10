@@ -88,8 +88,8 @@ pipeline {
         stage('Ansible Configure') {
           steps {
              dir('ansible'){
-             sh 'ansible-inventory -i "inventory/multiple_aws_ec2.yml" --graph -vvv'
-             sh 'ansible-playbook -i inventory/multiple_ec2.yml playbooks/main.yml'
+             sh 'ansible-inventory -i "inventory/multiple_aws_ec2.yml" --graph'
+             sh 'ansible-playbook -i "inventory/multiple_aws_ec2.yml" playbooks/main.yml'
              }
           }
         }
