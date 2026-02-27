@@ -17,6 +17,8 @@ pipeline {
             steps {
                 sh 'terraform version'
 				sh 'whoami'
+				sh 'echo $PATH'
+                sh 'which docker || echo "Docker not in PATH"'
             }
         }
 		
