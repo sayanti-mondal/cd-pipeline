@@ -4,6 +4,7 @@ pipeline {
 	
     tools { 
         terraform 'terraform 1.13.5'
+		ansible 'ansible'
     }
 	
      environment {
@@ -12,9 +13,10 @@ pipeline {
     }
 	
     stages {
-        stage('check terraform') {
+        stage('check configurations') {
             steps {
                 sh 'terraform version'
+				sh 'ansible --version'
             }
         }
 		
@@ -32,47 +34,47 @@ pipeline {
        //        }
        //    }
    
-        stage('initialize terraforrm') {
-            steps {
-                dir('terraform'){
-                  sh 'terraform init'
-                  }
-              }
-          }
+    //     stage('initialize terraforrm') {
+    //         steps {
+    //             dir('terraform'){
+    //               sh 'terraform init'
+    //               }
+    //           }
+    //       }
 		  
-            stage('terraform plan') {
-            steps {
-                dir('terraforrm') {
-                  sh 'terraform plan -out=tfplan'
-                  //sh 'terraform show tfplan'
-                  }
-              }
-          }
+    //         stage('terraform plan') {
+    //         steps {
+    //             dir('terraforrm') {
+    //               sh 'terraform plan -out=tfplan'
+    //               //sh 'terraform show tfplan'
+    //               }
+    //           }
+    //       }
 		  
-          stage('Manual approval') {
-              //when {
-              // branch 'main'
-              // }
-            steps {
-                  input message: "Approve infrastructure changes?", ok: "Apply"
-                  }
-           }
+    //       stage('Manual approval') {
+    //           //when {
+    //           // branch 'main'
+    //           // }
+    //         steps {
+    //               input message: "Approve infrastructure changes?", ok: "Apply"
+    //               }
+    //        }
 		  
-          stage('Terraform Apply') {
-            steps {
-                dir('terraforrm') {
-                    sh 'terraform apply -input=false tfplan'
-                }
-            }
-          }
+    //       stage('Terraform Apply') {
+    //         steps {
+    //             dir('terraforrm') {
+    //                 sh 'terraform apply -input=false tfplan'
+    //             }
+    //         }
+    //       }
 		  
-		  stage('Ansible Configure') {
-			  steps {
-				 dir('ansible'){
-				 sh 'ansible-inventory -i "inventory/multiple_aws_ec2.yml" --graph'
-				 sh 'ansible-playbook -i "inventory/multiple_aws_ec2.yml" playbooks/static_website_deployment.yml'
-				  }
-                }
-            }
+		  // stage('Ansible Configure') {
+			 //  steps {
+				//  dir('ansible'){
+				//  sh 'ansible-inventory -i "inventory/multiple_aws_ec2.yml" --graph'
+				//  sh 'ansible-playbook -i "inventory/multiple_aws_ec2.yml" playbooks/static_website_deployment.yml'
+				//   }
+    //             }
+    //         }
         }
    }
