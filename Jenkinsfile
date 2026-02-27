@@ -42,7 +42,7 @@ pipeline {
 		  
             stage('terraform plan') {
             steps {
-                dir('terraform')
+                dir('terraform') {
                   sh 'terraform plan -out=tfplan'
                   //sh 'terraform show tfplan'
                   }
