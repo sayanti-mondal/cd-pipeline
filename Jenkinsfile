@@ -16,6 +16,7 @@ pipeline {
         stage('check configurations') {
             steps {
                 sh 'terraform version'
+				sh 'whoami'
             }
         }
 		
