@@ -72,7 +72,7 @@ pipeline {
 		  stage('Ansible Configure') {
 			  agent {
                 docker {
-                  image 'alpine/ansible:latest'
+                  image 'quay.io/ansible/awx-ee:latest'
                   args '-u root'
 				  label 'agent1'
                  }
