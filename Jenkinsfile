@@ -72,7 +72,7 @@ pipeline {
 		  stage('Ansible Configure') {
 			  agent {
                 docker {
-                  image 'willhallonline/ansible:latest'
+                  image 'alpine/ansible:latest'
                   args '-u root'
 				  label 'agent1'
                  }
