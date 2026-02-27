@@ -8,6 +8,7 @@ pipeline {
     }
 	
      environment {
+	    PATH = "/usr/bin:/usr/local/bin:${env.PATH}"
         AWS_ACCESS_KEY_ID     = credentials('aws-creds')
         AWS_SECRET_ACCESS_KEY = credentials('aws-creds')
     }
