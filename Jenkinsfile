@@ -32,7 +32,7 @@ pipeline {
    //            }
    //        }
    
-        stage('initialize terraform') {
+        stage('initialize terraforrm') {
             steps {
                 dir('terraform'){
                   sh 'terraform init'
@@ -42,7 +42,7 @@ pipeline {
 		  
             stage('terraform plan') {
             steps {
-                dir('terraform') {
+                dir('terraforrm') {
                   sh 'terraform plan -out=tfplan'
                   //sh 'terraform show tfplan'
                   }
@@ -60,7 +60,7 @@ pipeline {
 		  
           stage('Terraform Apply') {
             steps {
-                dir('terraform') {
+                dir('terraforrm') {
                     sh 'terraform apply -input=false tfplan'
                 }
             }
