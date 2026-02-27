@@ -74,6 +74,7 @@ pipeline {
                 docker {
                   image 'ansible/ansible:latest'
                   args '-u root'
+				  label 'agent1'
                  }
              }
 			  steps {
