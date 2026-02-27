@@ -4,7 +4,7 @@ pipeline {
 	
     tools { 
         terraform 'terraform 1.13.5'
-		ansible 'ansible'
+		//ansible 'ansible'
     }
 	
      environment {
@@ -16,7 +16,6 @@ pipeline {
         stage('check configurations') {
             steps {
                 sh 'terraform version'
-				sh 'ansible --version'
             }
         }
 		
@@ -68,13 +67,19 @@ pipeline {
     //         }
     //       }
 		  
-		  // stage('Ansible Configure') {
-			 //  steps {
-				//  dir('ansible'){
-				//  sh 'ansible-inventory -i "inventory/multiple_aws_ec2.yml" --graph'
-				//  sh 'ansible-playbook -i "inventory/multiple_aws_ec2.yml" playbooks/static_website_deployment.yml'
-				//   }
-    //             }
-    //         }
+		  stage('Ansible Configure') {
+			  agent {
+                docker {
+                  image 'ansible/ansible:latest'
+                  args '-u root'
+                 }
+             }
+			  steps {
+				 dir('ansible'){
+				 sh 'ansible-inventory -i "inventory/multiple_aws_ec2.yml" --graph'
+				 sh 'ansible-playbook -i "inventory/multiple_aws_ec2.yml" playbooks/static_website_deployment.yml'
+				  }
+                }
+            }
         }
    }
